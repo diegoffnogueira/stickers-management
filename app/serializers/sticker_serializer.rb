@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StickerSerializer < ActiveModel::Serializer
   has_one :collection
   attribute :uuid, key: :id

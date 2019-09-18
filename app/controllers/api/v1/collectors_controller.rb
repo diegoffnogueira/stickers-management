@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     class CollectorsController < ApplicationController
@@ -25,6 +27,7 @@ module API
       end
 
       private
+
       # Use callbacks to share common setup or constraints between actions.
       def load_collector
         @collector = Collector.by_uuid(params[:id])&.first
@@ -38,4 +41,3 @@ module API
     end
   end
 end
-

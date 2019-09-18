@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     class CollectionsController < ApplicationController
@@ -36,7 +38,7 @@ module API
       private
 
       def create_stickers
-        @collection.album.number_of_stickers.times { |number| create_sticker(number+1) }
+        @collection.album.number_of_stickers.times { |number| create_sticker(number + 1) }
       end
 
       def create_sticker(number)
@@ -64,7 +66,7 @@ module API
       end
 
       def build_collection_params
-        {collector: @collector, album: @album}
+        { collector: @collector, album: @album }
       end
 
       def collection_params
@@ -73,5 +75,3 @@ module API
     end
   end
 end
-
-

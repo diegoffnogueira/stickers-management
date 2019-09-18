@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Album < ApplicationRecord
   scope :by_uuid, (->(uuid) { where(uuid: uuid) })
   after_initialize :set_uuid

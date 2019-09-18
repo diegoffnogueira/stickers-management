@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -5,6 +7,7 @@ ruby '2.6.3'
 
 gem 'active_model_serializers', '~> 0.8.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'data_migrate', '~> 6.0'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
@@ -28,7 +31,19 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rubocop'
+  gem 'rubocop-checkstyle_formatter', require: false
+end
+
+group :test do
+  gem 'factory_bot_rails', require: false
+  gem 'faker', '~> 2.3'
+  gem 'rspec-rails'
+  gem 'rubycritic', require: false
+  gem 'simplecov'
+  gem 'simplecov-cobertura'
+  gem 'simplecov-rcov'
   gem 'sqlite3'
 end
 
@@ -40,4 +55,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

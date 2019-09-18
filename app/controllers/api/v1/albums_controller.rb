@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     class AlbumsController < ApplicationController
@@ -58,4 +60,3 @@ module API
     end
   end
 end
-

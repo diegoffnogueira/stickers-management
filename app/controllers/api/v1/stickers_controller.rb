@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   module V1
     class StickersController < ApplicationController
@@ -41,4 +43,3 @@ module API
     end
   end
 end
-

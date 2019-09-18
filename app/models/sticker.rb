@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sticker < ApplicationRecord
   belongs_to :collection
 
