@@ -25,17 +25,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-application_record_rb.html">app/models/application_record.rb</a></td>
-            <td class='right_align'><tt>5</tt></td>
-            <td class='right_align'><tt>2</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>9</tt></td>
+            <td class='right_align'><tt>4</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.89%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:100px"></div>
-        <div class="uncovered" style="width:0px"></div>
+        <div class="covered" style="width:89px"></div>
+        <div class="uncovered" style="width:11px"></div>
       </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>75.00%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:100px"></div>
-        <div class="uncovered" style="width:0px"></div>
+        <div class="covered" style="width:75px"></div>
+        <div class="uncovered" style="width:25px"></div>
       </div></td>
           </tr>
         </tbody>
@@ -63,12 +63,24 @@
           <td><pre><a name="line5">5</a>   self.abstract_class = true</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line6">6</a> end</pre></td>
+          <td><pre><a name="line6">6</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>   def active_record_errors</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line8">8</a>     errors&amp;.messages&amp;.map { |_key, value| value }&amp;.map { |error, _temp| error }</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line9">9</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line10">10</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2019-09-17 22:26:37 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2019-09-18 21:56:04 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

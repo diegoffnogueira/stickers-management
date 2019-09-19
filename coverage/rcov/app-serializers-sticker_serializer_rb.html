@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-serializers-sticker_serializer_rb.html">app/serializers/sticker_serializer.rb</a></td>
-            <td class='right_align'><tt>25</tt></td>
-            <td class='right_align'><tt>19</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>24.00%</tt></div>
+            <td class='right_align'><tt>24</tt></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>25.00%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:24px"></div>
-        <div class="uncovered" style="width:76px"></div>
+        <div class="covered" style="width:25px"></div>
+        <div class="uncovered" style="width:75px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>0.00%</tt></div>
       <div class="percent_graph">
@@ -63,72 +63,69 @@
           <td><pre><a name="line5">5</a>   has_one :collection</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line6">6</a>   attribute :uuid, key: :id</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line7">7</a>   attributes :number, :quantity, :status, :number_of_repeated</pre></td>
+          <td><pre><a name="line6">6</a>   attributes :number, :quantity, :status, :number_of_repeated</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line8">8</a> </pre></td>
+          <td><pre><a name="line7">7</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line9">9</a>   STATUS = [REPEATED = &#39;REPEATED&#39;, USED = &#39;USED&#39;, MISSING = &#39;MISSING&#39;].freeze</pre></td>
+          <td><pre><a name="line8">8</a>   STATUS = [REPEATED = &#39;REPEATED&#39;, USED = &#39;USED&#39;, MISSING = &#39;MISSING&#39;].freeze</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line10">10</a> </pre></td>
+          <td><pre><a name="line9">9</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line11">11</a>   def status</pre></td>
+          <td><pre><a name="line10">10</a>   def status</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line12">12</a>     if quantity.zero?</pre></td>
+          <td><pre><a name="line11">11</a>     if quantity.zero?</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line13">13</a>       Sticker::MISSING</pre></td>
+          <td><pre><a name="line12">12</a>       Sticker::MISSING</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line14">14</a>     elsif quantity == 1</pre></td>
+          <td><pre><a name="line13">13</a>     elsif quantity == 1</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line15">15</a>       Sticker::USED</pre></td>
+          <td><pre><a name="line14">14</a>       Sticker::USED</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line16">16</a>     else</pre></td>
+          <td><pre><a name="line15">15</a>     else</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line17">17</a>       Sticker::REPEATED</pre></td>
+          <td><pre><a name="line16">16</a>       Sticker::REPEATED</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line18">18</a>     end</pre></td>
+          <td><pre><a name="line17">17</a>     end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line19">19</a>   end</pre></td>
+          <td><pre><a name="line18">18</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line20">20</a> </pre></td>
+          <td><pre><a name="line19">19</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line21">21</a>   def number_of_repeated</pre></td>
+          <td><pre><a name="line20">20</a>   def number_of_repeated</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line22">22</a>     return quantity - 1 if quantity &gt; 1</pre></td>
+          <td><pre><a name="line21">21</a>     return quantity - 1 if quantity &gt; 1</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line23">23</a> </pre></td>
+          <td><pre><a name="line22">22</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line24">24</a>     0</pre></td>
+          <td><pre><a name="line23">23</a>     0</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line25">25</a>   end</pre></td>
+          <td><pre><a name="line24">24</a>   end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line26">26</a> end</pre></td>
+          <td><pre><a name="line25">25</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2019-09-17 22:26:37 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2019-09-18 21:56:04 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

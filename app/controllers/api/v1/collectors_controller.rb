@@ -5,36 +5,31 @@ module API
     class CollectorsController < ApplicationController
       before_action :load_collector, only: %i[show destroy]
 
-      # GET /collectors/1
       def show
         render json: @collector, status: :ok
       end
 
-      # POST /collectors
       def create
         @collector = Collector.new(collector_params)
+        return handle_response(response: @collector, status_code: :created) if @collector.save
 
-        if @collector.save
-          render json: @collector, status: :created
-        else
-          render json: @collector.errors, status: :unprocessable_entity
-        end
+        handle_error_response(response: @collector, status_code: :unprocessable_entity)
       end
 
-      # DELETE /collectors/1
       def destroy
-        @collector.destroy
+        return head :no_content if @collector.destroy
+
+        handle_error_response(response: @collector, status_code: :unprocessable_entity)
       end
 
       private
 
-      # Use callbacks to share common setup or constraints between actions.
       def load_collector
         @collector = Collector.by_uuid(params[:id])&.first
-        head :not_found if @collector.blank?
+
+        return head :not_found if @collector.blank?
       end
 
-      # Only allow a trusted parameter "white list" through.
       def collector_params
         params.require(:collector).permit(:name, :email)
       end

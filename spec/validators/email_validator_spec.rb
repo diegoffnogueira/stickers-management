@@ -25,8 +25,7 @@ RSpec.describe 'EmailValidator' do
     end
     it do
       subject
-      expect(collector.errors[:email][0]).to eql('Este não é um email válido')
+      expect(collector.errors[:email][0]).to eql('STICKERS004 - O email do colecionador não é um email válido')
     end
   end
-
 end

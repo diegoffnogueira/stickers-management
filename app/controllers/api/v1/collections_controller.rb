@@ -13,26 +13,23 @@ module API
       end
 
       def show
-        render json: @collection
+        render json: @collection, status: :ok
       end
 
       def create
         @collection = Collection.new(build_collection_params)
-
         if @collection.save
           create_stickers
-          render json: @collection, status: :created
+          handle_response(response: @collection, status_code: :created)
         else
-          render json: @collection.errors, status: :unprocessable_entity
+          handle_error_response(response: @collection, status_code: :unprocessable_entity)
         end
       end
 
       def destroy
-        if @collection.destroy
-          head :no_content
-        else
-          render json: @collection.errors, status: :unprocessable_entity
-        end
+        return head :no_content if @collection.destroy
+
+        handle_error_response(response: @collection, status_code: :unprocessable_entity)
       end
 
       private
@@ -47,22 +44,26 @@ module API
 
       def load_collector
         @collector = Collector.by_uuid(params[:collector_id])&.first
-        head :not_found if @collector.blank?
+
+        return head :not_found if @collector.blank?
       end
 
       def load_album
         @album = Album.by_uuid(params[:album_id])&.first
-        head :not_found if @album.blank?
+
+        return head :not_found if @album.blank?
       end
 
       def load_collections
         @collections = Collection.by_collector(@collector)
-        head :not_found if @collections.empty?
+
+        return head :not_found if @collections.empty?
       end
 
       def load_collection
         @collection = Collection.by_uuid(params[:id])&.first
-        head :not_found if @collection.blank?
+
+        return head :not_found if @collection.blank?
       end
 
       def build_collection_params

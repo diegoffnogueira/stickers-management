@@ -11,32 +11,32 @@ module API
       end
 
       def update
-        if @sticker.update(sticker_params)
-          render json: @sticker
-        else
-          render json: @sticker.errors, status: :unprocessable_entity
-        end
+        sticker_updated = @sticker.update(sticker_params)
+        return handle_response(response: @sticker, status_code: :ok) if sticker_updated
+
+        handle_error_response(response: @sticker, status_code: :unprocessable_entity)
       end
 
       private
 
-      # Use callbacks to share common setup or constraints between actions.
+      def load_collection
+        @collection = Collection.by_uuid(params[:collection_id])&.first
+
+        return head :not_found if @collection.blank?
+      end
+
       def load_stickers
         @stickers = Sticker.by_collection(@collection)
-        head :not_found if @stickers.empty?
+
+        return head :not_found if @stickers.empty?
       end
 
       def load_sticker
         @sticker = Sticker.by_uuid(params[:id])&.first
-        head :not_found if @sticker.blank?
+
+        return head :not_found if @sticker.blank?
       end
 
-      def load_collection
-        @collection = Collection.by_uuid(params[:collection_id])&.first
-        head :not_found if @collection.blank?
-      end
-
-      # Only allow a trusted parameter "white list" through.
       def sticker_params
         params.require(:sticker).permit(:quantity)
       end

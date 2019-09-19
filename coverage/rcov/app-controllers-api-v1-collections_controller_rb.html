@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-api-v1-collections_controller_rb.html">app/controllers/api/v1/collections_controller.rb</a></td>
-            <td class='right_align'><tt>77</tt></td>
-            <td class='right_align'><tt>61</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>20.78%</tt></div>
+            <td class='right_align'><tt>78</tt></td>
+            <td class='right_align'><tt>58</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>25.64%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:21px"></div>
-        <div class="uncovered" style="width:79px"></div>
+        <div class="covered" style="width:26px"></div>
+        <div class="uncovered" style="width:74px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>0.00%</tt></div>
       <div class="percent_graph">
@@ -96,7 +96,7 @@
           <td><pre><a name="line16">16</a>       def show</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line17">17</a>         render json: @collection</pre></td>
+          <td><pre><a name="line17">17</a>         render json: @collection, status: :ok</pre></td>
         </tr>
         <tr class="uncovered">
           <td><pre><a name="line18">18</a>       end</pre></td>
@@ -110,125 +110,125 @@
         <tr class="uncovered">
           <td><pre><a name="line21">21</a>         @collection = Collection.new(build_collection_params)</pre></td>
         </tr>
-        <tr class="inferred">
-          <td><pre><a name="line22">22</a> </pre></td>
+        <tr class="uncovered">
+          <td><pre><a name="line22">22</a>         if @collection.save</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line23">23</a>         if @collection.save</pre></td>
+          <td><pre><a name="line23">23</a>           create_stickers</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line24">24</a>           create_stickers</pre></td>
+          <td><pre><a name="line24">24</a>           handle_response(response: @collection, status_code: :created)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line25">25</a>           render json: @collection, status: :created</pre></td>
+          <td><pre><a name="line25">25</a>         else</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line26">26</a>         else</pre></td>
+          <td><pre><a name="line26">26</a>           handle_error_response(response: @collection, status_code: :unprocessable_entity)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line27">27</a>           render json: @collection.errors, status: :unprocessable_entity</pre></td>
+          <td><pre><a name="line27">27</a>         end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line28">28</a>         end</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line29">29</a>       end</pre></td>
+          <td><pre><a name="line28">28</a>       end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line30">30</a> </pre></td>
+          <td><pre><a name="line29">29</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line31">31</a>       def destroy</pre></td>
+          <td><pre><a name="line30">30</a>       def destroy</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line32">32</a>         if @collection.destroy</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line33">33</a>           head :no_content</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line34">34</a>         else</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line35">35</a>           render json: @collection.errors, status: :unprocessable_entity</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line36">36</a>         end</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line37">37</a>       end</pre></td>
+          <td><pre><a name="line31">31</a>         return head :no_content if @collection.destroy</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line38">38</a> </pre></td>
+          <td><pre><a name="line32">32</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line39">39</a>       private</pre></td>
+          <td><pre><a name="line33">33</a>         handle_error_response(response: @collection, status_code: :unprocessable_entity)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line34">34</a>       end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line40">40</a> </pre></td>
+          <td><pre><a name="line35">35</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line41">41</a>       def create_stickers</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line42">42</a>         @collection.album.number_of_stickers.times { |number| create_sticker(number + 1) }</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line43">43</a>       end</pre></td>
+          <td><pre><a name="line36">36</a>       private</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line44">44</a> </pre></td>
+          <td><pre><a name="line37">37</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line45">45</a>       def create_sticker(number)</pre></td>
+          <td><pre><a name="line38">38</a>       def create_stickers</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line46">46</a>         Sticker.create(collection: @collection, number: number)</pre></td>
+          <td><pre><a name="line39">39</a>         @collection.album.number_of_stickers.times { |number| create_sticker(number + 1) }</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line47">47</a>       end</pre></td>
+          <td><pre><a name="line40">40</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line41">41</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line42">42</a>       def create_sticker(number)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line43">43</a>         Sticker.create(collection: @collection, number: number)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line44">44</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line45">45</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line46">46</a>       def load_collector</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line47">47</a>         @collector = Collector.by_uuid(params[:collector_id])&amp;.first</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line48">48</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line49">49</a>       def load_collector</pre></td>
+          <td><pre><a name="line49">49</a>         return head :not_found if @collector.blank?</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line50">50</a>         @collector = Collector.by_uuid(params[:collector_id])&amp;.first</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line51">51</a>         head :not_found if @collector.blank?</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line52">52</a>       end</pre></td>
+          <td><pre><a name="line50">50</a>       end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line53">53</a> </pre></td>
+          <td><pre><a name="line51">51</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line54">54</a>       def load_album</pre></td>
+          <td><pre><a name="line52">52</a>       def load_album</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line55">55</a>         @album = Album.by_uuid(params[:album_id])&amp;.first</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line56">56</a>         head :not_found if @album.blank?</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line57">57</a>       end</pre></td>
+          <td><pre><a name="line53">53</a>         @album = Album.by_uuid(params[:album_id])&amp;.first</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line58">58</a> </pre></td>
+          <td><pre><a name="line54">54</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line59">59</a>       def load_collections</pre></td>
+          <td><pre><a name="line55">55</a>         return head :not_found if @album.blank?</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line60">60</a>         @collections = Collection.by_collector(@collector)</pre></td>
+          <td><pre><a name="line56">56</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line57">57</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line61">61</a>         head :not_found if @collections.empty?</pre></td>
+          <td><pre><a name="line58">58</a>       def load_collections</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line59">59</a>         @collections = Collection.by_collector(@collector)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line60">60</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line61">61</a>         return head :not_found if @collections.empty?</pre></td>
         </tr>
         <tr class="uncovered">
           <td><pre><a name="line62">62</a>       end</pre></td>
@@ -242,49 +242,52 @@
         <tr class="uncovered">
           <td><pre><a name="line65">65</a>         @collection = Collection.by_uuid(params[:id])&amp;.first</pre></td>
         </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line66">66</a>         head :not_found if @collection.blank?</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line66">66</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line67">67</a>       end</pre></td>
+          <td><pre><a name="line67">67</a>         return head :not_found if @collection.blank?</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line68">68</a>       end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line68">68</a> </pre></td>
+          <td><pre><a name="line69">69</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line69">69</a>       def build_collection_params</pre></td>
+          <td><pre><a name="line70">70</a>       def build_collection_params</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line70">70</a>         { collector: @collector, album: @album }</pre></td>
+          <td><pre><a name="line71">71</a>         { collector: @collector, album: @album }</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line71">71</a>       end</pre></td>
+          <td><pre><a name="line72">72</a>       end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line72">72</a> </pre></td>
+          <td><pre><a name="line73">73</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line73">73</a>       def collection_params</pre></td>
+          <td><pre><a name="line74">74</a>       def collection_params</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line74">74</a>         params.require(:collection).permit(:album_id, :collector_id)</pre></td>
+          <td><pre><a name="line75">75</a>         params.require(:collection).permit(:album_id, :collector_id)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line75">75</a>       end</pre></td>
+          <td><pre><a name="line76">76</a>       end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line76">76</a>     end</pre></td>
+          <td><pre><a name="line77">77</a>     end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line77">77</a>   end</pre></td>
+          <td><pre><a name="line78">78</a>   end</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line78">78</a> end</pre></td>
+          <td><pre><a name="line79">79</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2019-09-17 22:26:37 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2019-09-18 21:56:04 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

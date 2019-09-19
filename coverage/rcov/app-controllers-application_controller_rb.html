@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>4</tt></td>
-            <td class='right_align'><tt>2</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>50.00%</tt></div>
+            <td class='right_align'><tt>21</tt></td>
+            <td class='right_align'><tt>16</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>23.81%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:50px"></div>
-        <div class="uncovered" style="width:50px"></div>
+        <div class="covered" style="width:24px"></div>
+        <div class="uncovered" style="width:76px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>0.00%</tt></div>
       <div class="percent_graph">
@@ -60,12 +60,63 @@
           <td><pre><a name="line4">4</a> class ApplicationController &lt; ActionController::API</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line5">5</a> end</pre></td>
+          <td><pre><a name="line5">5</a>   rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line6">6</a>     error = Error.new</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line7">7</a>     error.add(:parameter_missing_exception, scope: %i[errors messages], parameter: parameter_missing_exception.param)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line8">8</a>     render json: ErrorSerializer.serialize(error), status: :bad_request</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line9">9</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line10">10</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line11">11</a>   protected</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line12">12</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line13">13</a>   def handle_error_response(response:, status_code:)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line14">14</a>     error = Error.new.add_all_messages(response.active_record_errors)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line15">15</a>     error_response = ErrorSerializer.serialize(error)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line16">16</a>     handle_response(response: error_response, status_code: status_code)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line17">17</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a> </pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line19">19</a>   def handle_response(response:, status_code:)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line20">20</a>     render json: response, status: status_code</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line21">21</a>   end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line22">22</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2019-09-17 22:26:37 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2019-09-18 21:56:04 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

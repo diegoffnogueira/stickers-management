@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-serializers-collection_serializer_rb.html">app/serializers/collection_serializer.rb</a></td>
-            <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>29.41%</tt></div>
+            <td class='right_align'><tt>6</tt></td>
+            <td class='right_align'><tt>4</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>33.33%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:29px"></div>
-        <div class="uncovered" style="width:71px"></div>
+        <div class="covered" style="width:33px"></div>
+        <div class="uncovered" style="width:67px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>0.00%</tt></div>
       <div class="percent_graph">
@@ -60,51 +60,18 @@
           <td><pre><a name="line4">4</a> class CollectionSerializer &lt; ActiveModel::Serializer</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line5">5</a>   attribute :uuid, key: :id</pre></td>
+          <td><pre><a name="line5">5</a>   has_one :album</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line6">6</a>   attributes :created_at, :updated_at</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line7">7</a> </pre></td>
+          <td><pre><a name="line6">6</a>   has_one :collector</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line8">8</a>   has_one :album</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line9">9</a>   has_one :collector</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line10">10</a> </pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line11">11</a>   def created_at</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line12">12</a>     DatetimeUtil.convert_to_miliseconds(object.created_at.to_datetime)</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line13">13</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line14">14</a> </pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line15">15</a>   def updated_at</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line16">16</a>     DatetimeUtil.convert_to_miliseconds(object.updated_at.to_datetime)</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line17">17</a>   end</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line18">18</a> end</pre></td>
+          <td><pre><a name="line7">7</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2019-09-17 22:26:37 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
+    <p>Generated on 2019-09-18 21:56:04 -0300 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.2.3</a></p>
 
   </body>
 </html>

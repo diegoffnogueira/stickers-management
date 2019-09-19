@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/collection.rb</title>
+    <title>app/serializers/error_serializer.rb</title>
     <link href="./assets/0.2.3/screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="./assets/0.2.3/print.css" media="print" rel="stylesheet" type="text/css" />
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Stickers-management C0 Coverage Information - Simploco - RCov</h1>
-    <h2>app/models/collection.rb</h2>
+    <h2>app/serializers/error_serializer.rb</h2>
 
     <div class="report_table_wrapper">
       <table class='report' id='report_table'>
@@ -24,13 +24,13 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-collection_rb.html">app/models/collection.rb</a></td>
+            <td class="left_align"><a href="app-serializers-error_serializer_rb.html">app/serializers/error_serializer.rb</a></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class='right_align'><tt>18</tt></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>33.33%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>25.00%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:33px"></div>
-        <div class="uncovered" style="width:67px"></div>
+        <div class="covered" style="width:25px"></div>
+        <div class="uncovered" style="width:75px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>0.00%</tt></div>
       <div class="percent_graph">
@@ -51,58 +51,76 @@
     <table class="details">
       <tbody>
         <tr class="inferred">
-          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
+          <td><pre><a name="line2">2</a> </pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line3">3</a> </pre></td>
+          <td><pre><a name="line3">3</a> # frozen_string_literal: true</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line4">4</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line4">4</a> class Collection &lt; ApplicationRecord</pre></td>
+          <td><pre><a name="line5">5</a> module ErrorSerializer</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line5">5</a>   belongs_to :album</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line6">6</a>   belongs_to :collector</pre></td>
+          <td><pre><a name="line6">6</a>   EMPTY_STRING = &#39;&#39;</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line7">7</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line8">8</a>   scope :by_uuid, (-&gt;(uuid) { where(uuid: uuid) })</pre></td>
+          <td><pre><a name="line8">8</a>   class &lt;&lt; self</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line9">9</a>   scope :by_collector, (-&gt;(collector) { where(&#39;collector_id = ?&#39;, collector.id) })</pre></td>
+          <td><pre><a name="line9">9</a>     def serialize(errors)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line10">10</a>       result = errors.empty? ? [] : build(errors)</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line11">11</a>       { errors: result }.compact</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line12">12</a>     end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line10">10</a> </pre></td>
+          <td><pre><a name="line13">13</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line11">11</a>   after_initialize :set_uuid</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line12">12</a> </pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line13">13</a>   validates :uuid, uniqueness: true</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line14">14</a>   validates :uuid, presence: true</pre></td>
+          <td><pre><a name="line14">14</a>     private</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line15">15</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line16">16</a>   def set_uuid</pre></td>
+          <td><pre><a name="line16">16</a>     def build(errors)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line17">17</a>     self.uuid ||= SecureRandom.uuid</pre></td>
+          <td><pre><a name="line17">17</a>       errors.messages.compact.reject(&amp;:empty?).map do |k|</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line18">18</a>   end</pre></td>
+          <td><pre><a name="line18">18</a>         pos = k.index(&#39;-&#39;)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line19">19</a> end</pre></td>
+          <td><pre><a name="line19">19</a>         code = pos.present? ? k[0..pos - 2] : EMPTY_STRING</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line20">20</a>         detail = pos.present? ? k[pos + 2..-1] : k</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line21">21</a>         [code: code, detail: detail]</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line22">22</a>       end.flatten</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line23">23</a>     end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line24">24</a>   end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line25">25</a> end</pre></td>
         </tr>
       </tbody>
     </table>
