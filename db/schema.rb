@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 2019_09_18_002411) do
     t.index ["uuid"], name: "index_collectors_on_uuid"
   end
 
+  create_table "data_migrations", primary_key: "version", id: :string, force: :cascade do |t|
+  end
+
   create_table "stickers", force: :cascade do |t|
     t.string "uuid"
     t.bigint "collection_id", null: false
